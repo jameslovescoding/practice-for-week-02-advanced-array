@@ -14,6 +14,16 @@ console.log(removeEWords('Enter the building')); // 'building'
 
 let removeEWords = function(sentence) {
     // Your code here
+    let arr = sentence.split(" ");
+    arr = arr.filter(word => {
+      for (let char of word) {
+        if (char === "e" || char === "E") {
+          return false;
+        }
+      }
+      return true;
+    });
+    return arr.join(" ");
 };
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
@@ -22,4 +32,4 @@ try {
   module.exports = removeEWords;
 } catch (e) {
   module.exports = null;
-}
+}

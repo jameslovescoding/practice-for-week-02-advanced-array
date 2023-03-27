@@ -30,11 +30,30 @@ console.log(repeatingTranslate("her family flew to France"));   // "herer family
 
 let repeatingTranslate = function(sentence) {
     // Your code here
+    let words = sentence.split(" ");
+    words.forEach((word, index, arr) => {
+        if (word.length >= 3) {
+            arr[index] = translateWord(word);
+        }
+    });
+    //console.log(words);
+    return words.join(" ");
 };
 
 
 let translateWord = function(word) {
     // Your code here
+    let vowels = "aeiouAEIOU";
+    if (vowels.includes(word[word.length-1])) {
+        return word + word;
+    } else {
+        for (let i = word.length-1; i >= 0; i--) {
+            if (vowels.includes(word[i])) {
+                return word + word.slice(i);
+            }
+        }
+    }
+    return word;
 };
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
@@ -43,4 +62,4 @@ try {
     module.exports = repeatingTranslate;
 } catch (e) {
     module.exports = null;
-}
+}
